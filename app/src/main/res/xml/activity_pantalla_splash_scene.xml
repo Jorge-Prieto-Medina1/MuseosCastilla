@@ -4,11 +4,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ConstraintSet android:id="@+id/start">
-        <Constraint android:id="@+id/imageView2"/>
+        <Constraint android:id="@+id/imgSplash" android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="100dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginRight="10dp" android:layout_marginEnd="10dp" android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
-        <Constraint android:id="@id/imageView2"/>
+        <Constraint android:id="@id/imgSplash"/>
     </ConstraintSet>
 
     <Transition

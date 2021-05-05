@@ -3,9 +3,11 @@ package com.jorgeprieto.Ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.WindowManager
-import android.view.animation.*
-import androidx.constraintlayout.motion.widget.MotionLayout
+import android.os.Handler
+import android.os.PersistableBundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.LinearLayout
 import com.jorgeprieto.museosjorgeprieto.MainActivity
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_pantalla_splash.*
@@ -13,32 +15,42 @@ import kotlinx.android.synthetic.main.activity_pantalla_splash.*
 
 class PantallaSplash : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //sirve para esconder la barra de estado
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_pantalla_splash)
+        //le asignamos a la pantalla el estilo sin nada para que la splash apareza en pantalla completa
 
-        val notionLayout = findViewById<MotionLayout>(R.id.motionLayout)
-        motionLayout.addTransitionListener(object : MotionLayout.TransitionListener{
-            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
 
-            }
 
-            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
 
-            }
 
-            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                startActivity(Intent ( this@PantallaSplash, MainActivity::class.java))
-                finish();
-            }
+        //animaciones
+        val animationImage = AnimationUtils.loadAnimation(this, R.anim.image_animation)
+        val superiorTxt = AnimationUtils.loadAnimation(this, R.anim.superior_txt_animation)
+        val inferiorTxt = AnimationUtils.loadAnimation(this, R.anim.inferior_txt_animation)
 
-            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
 
-            }
-        })
+        //elementos
+        var image = this.imgSplash
+        var superior = this.txtCreador1
+        var inferior = this.txtCreador2
 
+        //asignacion de elementos
+        image.animation = animationImage
+        superior.animation = superiorTxt
+        inferior.animation = inferiorTxt
+
+        //inicio de las animaciones
+        image.animation.start()
+        superior.animation.start()
+        inferior.animation.start()
+
+        val splashScrenTime = 4000
+        val Main = Intent (this@PantallaSplash, MainActivity::class.java)
+
+        Handler().postDelayed({
+            startActivity(Main)
+            finish()
+        }, splashScrenTime.toLong())
     }
 }
