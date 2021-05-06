@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1040319110042",
+    "project_id": "museos-castilla",
+    "storage_bucket": "museos-castilla.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040319110042:android:b1175382a4dd34beb6f823",
+        "android_client_info": {
+          "package_name": "com.jorgeprieto.museosjorgeprieto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040319110042-49flqiknr1a3hp8n7a6ch7ief1afras6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHRDoG4MgesZhwwV2GYC8hzEKf6GZC3Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040319110042-49flqiknr1a3hp8n7a6ch7ief1afras6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
