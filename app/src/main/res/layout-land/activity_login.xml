@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintGuide_begin="73dp"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintGuide_percent="0.0"/>
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gHor4"
@@ -47,7 +47,7 @@
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.72"
+            app:layout_constraintGuide_percent="0.80"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -56,7 +56,7 @@
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.8"
+            app:layout_constraintGuide_percent="0.9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -65,7 +65,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.05"
+            app:layout_constraintGuide_percent="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -74,7 +74,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.2"
+            app:layout_constraintGuide_percent="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -93,7 +93,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.8"
+            app:layout_constraintGuide_percent="0.75"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -102,7 +102,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintGuide_percent="0.9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

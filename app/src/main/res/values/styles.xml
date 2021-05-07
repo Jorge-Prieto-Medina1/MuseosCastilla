@@ -9,4 +9,11 @@
     <style name="Theme.splash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="loginScreenButton">
+        <item name="android:background">@color/yellow</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
 </resources>

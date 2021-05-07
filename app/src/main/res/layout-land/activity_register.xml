@@ -5,8 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.jorgeprieto.Ui.LoginActivity">
-
+        tools:context="com.jorgeprieto.Ui.RegisterActivity">
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gHor1"
             android:orientation="horizontal"
@@ -21,7 +20,7 @@
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintGuide_percent="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -31,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintGuide_begin="73dp"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintGuide_begin="2dp"/>
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gHor4"
@@ -47,7 +46,7 @@
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.72"
+            app:layout_constraintGuide_percent="0.83"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -56,7 +55,7 @@
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.8"
+            app:layout_constraintGuide_percent="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -74,7 +73,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.2"
+            app:layout_constraintGuide_percent="0.35"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -93,7 +92,7 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.8"
+            app:layout_constraintGuide_percent="0.65"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -128,17 +127,19 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/imagen"
+            android:id="@+id/imgRg"
+
             app:layout_constraintBottom_toTopOf="@id/gHor2"
             app:layout_constraintEnd_toStartOf="@id/gVer4"
             app:layout_constraintStart_toEndOf="@id/gVer2"
-            app:layout_constraintTop_toBottomOf="@id/gHor3" app:srcCompat="@drawable/museoscuadrado"/>
+            app:layout_constraintTop_toBottomOf="@id/gHor3"
+            app:srcCompat="@drawable/usuario"/>
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnRegisterRg"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/login"
+            android:text="@string/register"
             style="@style/loginScreenButton"
             app:layout_constraintBottom_toTopOf="@id/gHor6"
             app:layout_constraintEnd_toStartOf="@id/gVer6"
@@ -147,25 +148,27 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRegisterLg"
+            android:id="@+id/btnBackRg"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/register"
+            android:text="@string/back"
             style="@style/loginScreenButton"
             app:layout_constraintBottom_toTopOf="@id/gHor6"
             app:layout_constraintEnd_toStartOf="@id/gVer5"
             app:layout_constraintStart_toEndOf="@id/gVer7"
             app:layout_constraintTop_toBottomOf="@id/gHor5"/>
+
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toStartOf="@id/gVer5"
             app:layout_constraintStart_toEndOf="@id/gVer1"
-            android:layout_marginTop="10dp"
-            android:id="@+id/txtEmail"
-            app:layout_constraintTop_toTopOf="@+id/gHor2" android:hint="@string/email"/>
+            android:id="@+id/txtEmailRg"
+            app:layout_constraintTop_toBottomOf="@+id/txtPushToImage"
+            app:layout_constraintHorizontal_bias="0.0" android:hint="@string/email"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -174,10 +177,28 @@
             app:layout_constraintEnd_toStartOf="@id/gVer5"
             app:layout_constraintStart_toEndOf="@id/gVer1"
             android:layout_marginTop="10dp"
-            android:id="@+id/txtPassword"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmail" android:hint="@string/password"/>
+            android:id="@+id/txtPasswordRg"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmailRg" android:hint="@string/password"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@id/gVer5"
+            app:layout_constraintStart_toEndOf="@id/gVer1"
+            android:id="@+id/txtName"
+            app:layout_constraintTop_toBottomOf="@+id/txtPasswordRg" android:hint="@string/name"/>
+    <TextView
+            android:text="@string/rgTextForImage"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPushToImage"
+            app:layout_constraintEnd_toStartOf="@id/gVer5"
+            app:layout_constraintStart_toEndOf="@id/gVer1"
+            app:layout_constraintTop_toTopOf="@+id/gHor2" android:textSize="25dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

@@ -3,4 +3,11 @@
     <string name="created1">Created By</string>
     <string name="created2">Jorge Prieto</string>
     <string name="descriptionLogo">logo of the musseum app</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="back">Back</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="rgTextForImage">Add an image by pressing on the image</string>
 </resources>

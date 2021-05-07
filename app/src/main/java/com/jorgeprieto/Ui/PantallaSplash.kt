@@ -46,7 +46,7 @@ class PantallaSplash : AppCompatActivity() {
         inferior.animation.start()
 
         val splashScrenTime = 4000
-        val Main = Intent (this@PantallaSplash, MainActivity::class.java)
+        val Main = Intent (this@PantallaSplash, LoginActivity::class.java)
 
         Handler().postDelayed({
             startActivity(Main)
