@@ -4,11 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.PersistableBundle
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
-import com.jorgeprieto.museosjorgeprieto.MainActivity
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_pantalla_splash.*
 

@@ -136,6 +136,16 @@
             app:srcCompat="@drawable/usuario"/>
 
     <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/invisible"
+            app:layout_constraintBottom_toTopOf="@id/gHor2"
+            app:layout_constraintEnd_toStartOf="@id/gVer4"
+            app:layout_constraintStart_toEndOf="@id/gVer2"
+            app:layout_constraintTop_toBottomOf="@id/gHor3"/>
+
+    <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnRegisterRg"
             android:layout_width="0dp"
             android:layout_height="0dp"
