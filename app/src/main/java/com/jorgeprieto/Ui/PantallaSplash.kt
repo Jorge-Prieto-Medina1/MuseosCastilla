@@ -1,29 +1,24 @@
 package com.jorgeprieto.Ui
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.PersistableBundle
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
-import com.jorgeprieto.museosjorgeprieto.MainActivity
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_pantalla_splash.*
+import kotlinx.android.synthetic.main.activity_register.*
 
 
 class PantallaSplash : AppCompatActivity() {
-
+    val REQUEST_CODE = 200
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_splash)
-        //le asignamos a la pantalla el estilo sin nada para que la splash apareza en pantalla completa
-
-
-
-
-
+        getPerm()
         //animaciones
         val animationImage = AnimationUtils.loadAnimation(this, R.anim.image_animation)
         val superiorTxt = AnimationUtils.loadAnimation(this, R.anim.superior_txt_animation)
@@ -46,11 +41,22 @@ class PantallaSplash : AppCompatActivity() {
         inferior.animation.start()
 
         val splashScrenTime = 4000
-        val Main = Intent (this@PantallaSplash, MainActivity::class.java)
+        val Main = Intent (this@PantallaSplash, LoginActivity::class.java)
 
         Handler().postDelayed({
             startActivity(Main)
             finish()
         }, splashScrenTime.toLong())
+    }
+
+    fun getPerm() {
+
+        if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), REQUEST_CODE)
+        }
+
+        if (checkSelfPermission(android.Manifest.permission.CAMERA)  != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), REQUEST_CODE)
+        }
     }
 }

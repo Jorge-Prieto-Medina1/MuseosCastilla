@@ -1,0 +1,140 @@
+package com.jorgeprieto.Ui
+
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.jorgeprieto.database.firebaseDatabase
+import com.jorgeprieto.museosjorgeprieto.ProviderType
+import com.jorgeprieto.museosjorgeprieto.R
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
+
+
+class LoginActivity : AppCompatActivity() {
+
+    private  val googleSignIn = 300
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+        register()
+        login ()
+        session()
+        loginGoogle()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        layoutLg.visibility = View.VISIBLE
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == googleSignIn){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+
+                if (account != null) {
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            goToMain(account.email ?: "", ProviderType.GOOGLE)
+                        } else {
+                            showAlert()
+                        }
+                    }
+
+                }
+            }catch (e: ApiException){
+                showAlert()
+            }
+
+        }
+    }
+
+
+    private fun loginGoogle(){
+        btnGoogleLg.setOnClickListener{
+            val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+
+            val googleClient = GoogleSignIn.getClient(this, googleConf)
+            googleClient.signOut()
+
+            startActivityForResult(googleClient.signInIntent, googleSignIn)
+        }
+    }
+
+    private fun session(){
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+        val provider = prefs.getString("provider", null)
+
+        if(email != null && provider != null){
+            layoutLg.visibility = View.INVISIBLE
+            goToMain(email, ProviderType.valueOf(provider))
+        }
+    }
+
+
+
+    private fun register (){
+
+        btnRegisterLg.setOnClickListener{
+            val register = Intent (this@LoginActivity, RegisterActivity::class.java)
+                startActivity(register)
+                finish()
+        }
+    }
+
+    private fun login (){
+
+        btnLogin.setOnClickListener{
+            if (txtEmail.text.isNotEmpty() && txtPassword.text.isNotEmpty()){
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(txtEmail.text.toString(),txtPassword.text.toString()).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        goToMain(txtEmail.text.toString(), ProviderType.BASIC)
+                    } else {
+                        showAlert()
+                    }
+                }
+            }
+        }
+
+    }
+
+    private fun showAlert(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Error")
+        builder.setMessage("Error, wrong email or password")
+        builder.setPositiveButton("Aceptar", null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    private fun goToMain(email: String, provider: ProviderType){
+        val main = Intent (this@LoginActivity, MainActivity::class.java).apply {
+            putExtra("email", email)
+            putExtra( "provider", provider.name)
+        }
+        startActivity(main)
+        finish()
+    }
+}

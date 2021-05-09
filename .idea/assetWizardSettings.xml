@@ -80,7 +80,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\pablo\Desktop\MuseosCuadrado.PNG" />
+                                                <entry key="imagePath" value="C:\Users\pablo\Desktop\googleIcon.png" />
                                                 <entry key="scalingPercent" value="73" />
                                               </map>
                                             </option>
@@ -115,7 +115,7 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="outputName" value="imagesmusseumlogo" />
+                                      <entry key="outputName" value="googleimageicon" />
                                     </map>
                                   </option>
                                 </PersistentState>
