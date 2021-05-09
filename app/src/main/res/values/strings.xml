@@ -12,4 +12,6 @@
     <string name="rgTextForImage">Add a photo by pressing on the image</string>
     <string name="alertTextForRegister">Error, operation failed</string>
     <string name="alertTextForLogin">Error, wrong email or password</string>
+    <string name="loginGoogle">Login with google</string>
+    <string name="prefs_file">com.jorgeprieto.museosjorgeprieto.PREFERENCE_FILE_KEY</string>
 </resources>

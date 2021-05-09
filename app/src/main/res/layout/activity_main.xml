@@ -22,6 +22,12 @@
     <Button
             android:text="Button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/button" tools:layout_editor_absoluteY="441dp"
-            tools:layout_editor_absoluteX="191dp"/>
+            android:layout_height="wrap_content" android:id="@+id/button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageView
+            android:layout_width="276dp"
+            android:layout_height="264dp"
+            android:id="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

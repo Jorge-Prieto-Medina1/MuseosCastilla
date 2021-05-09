@@ -2,18 +2,23 @@ package com.jorgeprieto.Ui
 
 import android.app.Activity
 import android.app.Instrumentation
+import android.content.Context
 import androidx.activity.*
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.KeyEvent
 import android.webkit.PermissionRequest
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.jorgeprieto.database.firebaseDatabase
 import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
@@ -22,12 +27,13 @@ import kotlinx.android.synthetic.main.activity_register.*
 import java.security.Permission
 import java.security.Provider
 import java.util.jar.Manifest
+import kotlin.coroutines.CoroutineContext
 
 class RegisterActivity : AppCompatActivity() {
 
     var fotoBol: Boolean = false
     val REQUEST_CODE = 200
-    var permission = arrayOf(CAMERA_SERVICE)
+    var photoURIUser:String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +52,6 @@ class RegisterActivity : AppCompatActivity() {
                 foto()
             }else{
                 Toast.makeText (this, "Camera permission necesary", Toast.LENGTH_SHORT).show()
-                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), REQUEST_CODE)
             }
 
         }
@@ -61,8 +66,8 @@ class RegisterActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
-            var foto = data.extras?.get("data") as Bitmap
-            imgRg.setImageBitmap(foto)
+            photoURIUser = data.toURI()
+            imgRg.setImageBitmap(data.extras?.get("data") as Bitmap)
             fotoBol = true
         }
     }
@@ -84,7 +89,6 @@ class RegisterActivity : AppCompatActivity() {
             if (txtEmailRg.text.isNotEmpty() && txtPasswordRg.text.isNotEmpty() && txtName.text.isNotEmpty() && fotoBol){
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(txtEmailRg.text.toString(), txtPasswordRg.text.toString()).addOnCompleteListener(){
                     if (it.isSuccessful){
-                        backHome(txtEmailRg.text.toString(),ProviderType.BASIC)
                         login()
                     }else{
                         showAlert()
@@ -99,7 +103,8 @@ class RegisterActivity : AppCompatActivity() {
     private fun login(){
         FirebaseAuth.getInstance().signInWithEmailAndPassword(txtEmailRg.text.toString(),txtPasswordRg.text.toString()).addOnCompleteListener {
             if (it.isSuccessful) {
-
+                addRestOfData()
+                goMain(txtEmailRg.text.toString(),ProviderType.BASIC)
             } else {
                 showAlert()
             }
@@ -108,12 +113,18 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun addRestOfData(){
         var auth = FirebaseAuth.getInstance()
-        auth.currentUser?.let {
+        auth.currentUser?.let { user ->
             val username = txtName.text.toString()
+            var photoURI = Uri.parse(photoURIUser)
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(username)
+                .setPhotoUri(photoURI)
+                .build()
+
+            user.updateProfile(profileUpdates)
 
         }
-
-        val username = txtName.text.toString()
+        goMain( txtEmailRg.toString(), ProviderType.BASIC)
     }
 
     private fun showAlert(){
@@ -125,8 +136,11 @@ class RegisterActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun backHome(email: String, provider: ProviderType){
-        val main = Intent (this@RegisterActivity, MainActivity::class.java)
+    private fun goMain(email: String, provider: ProviderType){
+        val main = Intent (this@RegisterActivity, MainActivity::class.java).apply {
+            putExtra("email", email)
+            putExtra( "provider", provider.name)
+        }
         startActivity(main)
         finish()
     }
