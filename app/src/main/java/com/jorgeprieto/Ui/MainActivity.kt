@@ -5,14 +5,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.provider.ContactsContract
-import android.provider.DocumentsProvider
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUserMetadata
-import com.google.firebase.ktx.Firebase
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_register.*

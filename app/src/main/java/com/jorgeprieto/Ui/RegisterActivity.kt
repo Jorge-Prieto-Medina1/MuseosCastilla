@@ -1,33 +1,25 @@
 package com.jorgeprieto.Ui
 
 import android.app.Activity
-import android.app.Instrumentation
-import android.content.Context
 import androidx.activity.*
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.KeyEvent
-import android.webkit.PermissionRequest
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.jorgeprieto.database.firebaseDatabase
+import com.jorgeprieto.NavigationDrawerMuseoActivity
 import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-import java.security.Permission
-import java.security.Provider
-import java.util.jar.Manifest
-import kotlin.coroutines.CoroutineContext
+
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -48,6 +40,10 @@ class RegisterActivity : AppCompatActivity() {
     fun capturePhoto() {
         btnImage.setOnClickListener {
 
+            if (checkSelfPermission(android.Manifest.permission.CAMERA)  != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), REQUEST_CODE)
+            }
+
             if (checkSelfPermission(android.Manifest.permission.CAMERA)  == PackageManager.PERMISSION_GRANTED) {
                 foto()
             }else{
@@ -59,6 +55,11 @@ class RegisterActivity : AppCompatActivity() {
 
 
     fun foto(){
+
+        if (checkSelfPermission(android.Manifest.permission.CAMERA)  != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), REQUEST_CODE)
+        }
+
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(cameraIntent, REQUEST_CODE)
     }
@@ -137,7 +138,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun goMain(email: String, provider: ProviderType){
-        val main = Intent (this@RegisterActivity, MainActivity::class.java).apply {
+        val main = Intent (this@RegisterActivity, NavigationDrawerMuseoActivity::class.java).apply {
             putExtra("email", email)
             putExtra( "provider", provider.name)
         }
