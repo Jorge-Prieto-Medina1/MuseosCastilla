@@ -2,21 +2,16 @@ package com.jorgeprieto.Ui
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.jorgeprieto.database.firebaseDatabase
+import com.jorgeprieto.NavigationDrawerMuseoActivity
 import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_login.*
@@ -130,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun goToMain(email: String, provider: ProviderType){
-        val main = Intent (this@LoginActivity, MainActivity::class.java).apply {
+        val main = Intent (this@LoginActivity, NavigationDrawerMuseoActivity::class.java).apply {
             putExtra("email", email)
             putExtra( "provider", provider.name)
         }
