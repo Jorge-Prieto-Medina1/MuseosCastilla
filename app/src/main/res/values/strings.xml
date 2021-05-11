@@ -27,6 +27,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="check_tickets">Check Tickets</string>
     <string name="logout">Log out</string>
     <string name="change">Change credentials</string>
+    <string name="map">Map of Museums</string>
 </resources>

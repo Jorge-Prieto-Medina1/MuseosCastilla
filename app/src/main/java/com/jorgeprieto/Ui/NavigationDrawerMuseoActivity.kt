@@ -65,7 +65,7 @@ class NavigationDrawerMuseoActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.User, R.id.nav_gallery, R.id.nav_slideshow, R.id.checkTickets
+                R.id.User, R.id.MusseumList, R.id.Map, R.id.checkTickets
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
