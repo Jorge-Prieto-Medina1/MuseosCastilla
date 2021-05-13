@@ -15,13 +15,15 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"/>
+        <activity android:name="com.jorgeprieto.ui.MusseumList.MusseumDetail">
+        </activity>
         <activity
                 android:name="com.jorgeprieto.NavigationDrawerMuseoActivity"
                 android:label="@string/title_activity_navigation_drawer_museo"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-                android:name="com.jorgeprieto.Ui.PantallaSplash"
+                android:name="com.jorgeprieto.ui.PantallaSplash"
                 android:label="@string/app_name"
                 android:theme="@style/Theme.splash">
             <intent-filter>
@@ -31,17 +33,17 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="com.jorgeprieto.Ui.LoginActivity"
+                android:name="com.jorgeprieto.ui.LoginActivity"
                 android:label="LoginActivity"
                 android:theme="@style/Theme.splash">
         </activity>
         <activity
-                android:name="com.jorgeprieto.Ui.RegisterActivity"
+                android:name="com.jorgeprieto.ui.RegisterActivity"
                 android:label="RegisterActivity"
                 android:theme="@style/Theme.splash">
         </activity>
         <activity
-                android:name="com.jorgeprieto.Ui.MainActivity"
+                android:name="com.jorgeprieto.ui.MainActivity"
                 android:label="Login"
                 android:theme="@style/Theme.splash">
         </activity>
