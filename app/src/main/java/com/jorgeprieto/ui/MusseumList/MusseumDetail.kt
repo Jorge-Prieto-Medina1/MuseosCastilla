@@ -42,6 +42,7 @@ class MusseumDetail : AppCompatActivity() {
         addPhoto()
         loadPhoto()
         changePhoto()
+        generateTicket()
 
     }
 
@@ -53,6 +54,12 @@ class MusseumDetail : AppCompatActivity() {
         txtNameMusseumDetail.text = musseum?.nombre
         musseum?.imagen?.let { mImage ->
             imgMusseumDetail.loadImage(mImage)
+        }
+    }
+
+    private fun generateTicket(){
+        btnBuyTickets.setOnClickListener(){
+            
         }
     }
 
