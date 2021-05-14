@@ -1,4 +1,4 @@
-package com.jorgeprieto.Ui
+package com.jorgeprieto.ui.LoginActicities
 
 import android.app.Activity
 import androidx.activity.*
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import com.jorgeprieto.NavigationDrawerMuseoActivity
 import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
@@ -26,6 +27,8 @@ class RegisterActivity : AppCompatActivity() {
     var fotoBol: Boolean = false
     val REQUEST_CODE = 200
     var photoURIUser:String = ""
+    private val db = FirebaseFirestore.getInstance()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,9 +127,19 @@ class RegisterActivity : AppCompatActivity() {
 
             user.updateProfile(profileUpdates)
 
+            db.collection("users").document(getString(R.string.prefs_file)).set(
+                hashMapOf(
+                    "username" to username,
+                    "address" to txtEmailRg.toString(),
+                    "provider" to ProviderType.BASIC.toString()
+                )
+            )
+
         }
         goMain( txtEmailRg.toString(), ProviderType.BASIC)
     }
+
+
 
     private fun showAlert(){
         val builder = AlertDialog.Builder(this)

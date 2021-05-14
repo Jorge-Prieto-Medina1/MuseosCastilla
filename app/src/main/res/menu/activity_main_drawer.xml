@@ -10,7 +10,7 @@
                 android:title="@string/menu_gallery"/>
         <item
                 android:id="@+id/Map"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_baseline_map_24"
                 android:title="@string/map"/>
         
         <item

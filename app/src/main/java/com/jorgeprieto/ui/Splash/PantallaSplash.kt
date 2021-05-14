@@ -1,4 +1,4 @@
-package com.jorgeprieto.Ui
+package com.jorgeprieto.ui.Splash
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.jorgeprieto.museosjorgeprieto.R
+import com.jorgeprieto.ui.LoginActicities.LoginActivity
 import kotlinx.android.synthetic.main.activity_pantalla_splash.*
 import kotlinx.android.synthetic.main.activity_register.*
 

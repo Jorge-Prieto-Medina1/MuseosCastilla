@@ -24,10 +24,10 @@
                 android:id="@+id/txtMusseumName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@color/yellow"
                 android:gravity="center"
                 android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/black"
                 android:textSize="15sp"
 
         />

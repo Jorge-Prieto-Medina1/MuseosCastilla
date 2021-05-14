@@ -1,16 +1,21 @@
-package dev.jorgeprieto.videoclub.adapter
+package com.jorgeprieto.adapter
 
 import android.view.View
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
-import dev.jorgeprieto.videoclub.model.Movie
-import dev.jorgeprieto.videoclub.utils.loadImage
-import kotlinx.android.synthetic.main.itemmovie.view.*
+import com.jorgeprieto.database.Museum
+import com.jorgeprieto.utils.loadImage
+import kotlinx.android.synthetic.main.itemmuseum.view.*
 
-class MoviesViewHolder (view: View) :RecyclerView.ViewHolder(view){
-    fun bind (movie: Movie){
-        itemView.movieTitle.text = movie.name
-        itemView.movieCover.loadImage(movie.cover)
+class MusseumViewHolder (view: View) :RecyclerView.ViewHolder(view){
+
+    fun bind (musseum: Museum){
+        var name = musseum.nombre
+        var city = musseum.localidad
+        var puntuaction = musseum.puntuacion
+        var votes = musseum.votos
+
+        itemView.imgMusseumImage.loadImage(musseum.imagen)
+        itemView.txtMusseumName.text = ("$name \n City $city")
     }
 
 }

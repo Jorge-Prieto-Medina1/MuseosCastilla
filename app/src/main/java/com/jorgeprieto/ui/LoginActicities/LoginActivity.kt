@@ -1,4 +1,4 @@
-package com.jorgeprieto.Ui
+package com.jorgeprieto.ui.LoginActicities
 
 import android.content.Context
 import android.content.Intent
@@ -11,17 +11,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import com.jorgeprieto.NavigationDrawerMuseoActivity
 import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 
 class LoginActivity : AppCompatActivity() {
 
     private  val googleSignIn = 300
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,25 @@ class LoginActivity : AppCompatActivity() {
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            goToMain(account.email ?: "", ProviderType.GOOGLE)
+
+                            db.collection("users").document(account.email.toString()).get().addOnSuccessListener {
+                                if (it.get("address") != account.email.toString()){
+                                    db.collection("users").document(account.email.toString()).set(
+                                        hashMapOf(
+                                            "username" to account.displayName.toString(),
+                                            "address" to account.email.toString(),
+                                            "provider" to ProviderType.GOOGLE.toString()
+                                        )
+                                    )
+
+                                    goToMain(account.email ?: "", ProviderType.GOOGLE)
+                                }else{
+
+                                    goToMain(account.email ?: "", ProviderType.GOOGLE)
+                                }
+
+                            }
+
                         } else {
                             showAlert()
                         }

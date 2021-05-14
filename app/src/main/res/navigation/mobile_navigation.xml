@@ -25,6 +25,6 @@
 
     <fragment android:id="@+id/checkTickets"
               android:name="com.jorgeprieto.ui.CheckTickets.CheckTicketsFragment"
-              android:label="check_tickets"
+              android:label="@string/check_tickets"
               tools:layout="@layout/fragment_check_tickets"/>
 </navigation>

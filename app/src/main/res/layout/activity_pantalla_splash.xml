@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.jorgeprieto.ui.PantallaSplash"
+        tools:context="com.jorgeprieto.ui.Splash.PantallaSplash"
         android:id="@+id/motionLayout"
         app:layoutDescription="@xml/activity_pantalla_splash_scene"
 >

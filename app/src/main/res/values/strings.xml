@@ -24,11 +24,13 @@
     <string name="textToChangeImage">Press to change current image</string>
     <string name="textCantChangeImage">Using google you can´t change the image</string>
     <string name="menu_user">User</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_gallery">List Of Museums</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="check_tickets">Check Tickets</string>
     <string name="logout">Log out</string>
     <string name="change">Change credentials</string>
     <string name="map">Map of Museums</string>
+    <string name="tickets">Buy tickets</string>
+    <string name="add_photo">Add photo</string>
 </resources>

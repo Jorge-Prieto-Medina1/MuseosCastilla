@@ -6,7 +6,7 @@
         android:id="@+id/layoutLg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.jorgeprieto.ui.LoginActivity">
+        tools:context="com.jorgeprieto.ui.LoginActicities.LoginActivity">
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gHor1"

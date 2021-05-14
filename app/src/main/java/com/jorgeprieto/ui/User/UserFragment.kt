@@ -14,29 +14,26 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.jorgeprieto.Ui.LoginActivity
+import com.google.firebase.firestore.FirebaseFirestore
+import com.jorgeprieto.ui.LoginActicities.LoginActivity
 import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
-import com.jorgeprieto.ui.home.UserViewModel
 import kotlinx.android.synthetic.main.fragment_user.*
-
 
 class UserFragment : Fragment() {
 
-    private lateinit var userViewModel: UserViewModel
     val REQUEST_CODE = 200
     var photoURIUser:String = ""
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        userViewModel =
-            ViewModelProviders.of(this).get(UserViewModel::class.java)
+
         val root = inflater.inflate(R.layout.fragment_user, container, false)
 
         return root
@@ -121,10 +118,19 @@ class UserFragment : Fragment() {
                 val auth = FirebaseAuth.getInstance()
                 if (txtPasswordChange.text.toString().trim() != "")
                     changeUserPassword(auth)
+                    db.collection("users").document(getString(R.string.prefs_file)).set(
+                        hashMapOf(
+                            "username" to txtNameChange.toString(),
+                            "address" to prefs.getString("email", null),
+                            "provider" to ProviderType.BASIC.toString()
+                        )
+                    )
                     showSucced()
                 if (txtNameChange.text.toString().trim() != "")
                     changeUserName(auth)
                     showSucced()
+
+
             }else {
                 showAlert()
             }
