@@ -1,0 +1,36 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.jorgeprieto.ui.CheckTickets.CheckTicketsFragment">
+
+
+    <Button android:layout_width="160dp"
+            android:layout_height="123dp"
+            style="@style/loginScreenButton"
+            android:text="@string/scanner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/btnScanner"/>
+    <TextView
+            android:text="@string/scanCode"
+            android:textSize="25sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txtQrInfo"
+
+            app:layout_constraintBottom_toTopOf="@+id/btnScanner" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            android:text=""
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/txtResultQr"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/btnScanner"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

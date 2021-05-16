@@ -5,37 +5,49 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.jorgeprieto.Ui.PantallaSplash"
+        android:orientation="vertical"
+        tools:context="com.jorgeprieto.ui.Splash.PantallaSplash"
         android:id="@+id/motionLayout"
         app:layoutDescription="@xml/activity_pantalla_splash_scene"
 >
 
     <ImageView
-            android:layout_width="360dp"
-            android:layout_height="360dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="100dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="84dp"
-
-            android:id="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.454"/>
+            android:id="@+id/imgSplash"
+            tools:srcCompat="@drawable/museoscuadrado"
+            app:srcCompat="@drawable/museoscuadrado" android:contentDescription="@string/descriptionLogo"
+    />
     <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/txtNombreApp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:textSize="36sp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" android:layout_marginTop="100dp" android:alpha="0.0"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtCreador1"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/blue"
+            android:text="@string/created1"
+            android:fontFamily="serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/imgSplash"/>
     <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNombreApp" android:layout_marginTop="50dp"
-            android:alpha="0.0"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtCreador2"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/blue"
+            android:text="@string/created2"
+            android:fontFamily="serif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtCreador1"/>
 
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

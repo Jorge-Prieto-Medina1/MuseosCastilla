@@ -1,0 +1,205 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.jorgeprieto.ui.User.UserFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor1"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor2"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor3"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintGuide_begin="50dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor4"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor5"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.83"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor6"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor7"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.73"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gHor8"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gVer1"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.05"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gVer2"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gVer3"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gVer4"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gVer5"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/imgChange"
+            app:layout_constraintBottom_toTopOf="@id/gHor2"
+            app:layout_constraintEnd_toStartOf="@id/gVer4"
+            app:layout_constraintStart_toEndOf="@id/gVer2"
+            app:layout_constraintTop_toBottomOf="@id/gHor3"
+            app:srcCompat="@drawable/usuario"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnImageChange"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/invisible"
+            app:layout_constraintBottom_toTopOf="@id/gHor2"
+            app:layout_constraintEnd_toStartOf="@id/gVer4"
+            app:layout_constraintStart_toEndOf="@id/gVer2"
+            app:layout_constraintTop_toBottomOf="@id/gHor3"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignOut"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/logout"
+            style="@style/loginScreenButton"
+            app:layout_constraintBottom_toTopOf="@id/gHor6"
+            app:layout_constraintEnd_toStartOf="@id/gVer5"
+            app:layout_constraintStart_toEndOf="@id/gVer1"
+            app:layout_constraintTop_toBottomOf="@id/gHor5"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnChange"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/change"
+            style="@style/loginScreenButton"
+            app:layout_constraintBottom_toTopOf="@id/gHor8"
+            app:layout_constraintEnd_toStartOf="@id/gVer5"
+            app:layout_constraintStart_toEndOf="@id/gVer1"
+            app:layout_constraintTop_toBottomOf="@id/gHor7"/>
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            app:layout_constraintEnd_toStartOf="@id/gVer5"
+            app:layout_constraintStart_toEndOf="@id/gVer1"
+            android:id="@+id/txtPasswordChange"
+            android:hint="@string/password"
+            app:layout_constraintTop_toBottomOf="@+id/txtNameChange"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@id/gVer5"
+            app:layout_constraintStart_toEndOf="@id/gVer1"
+            android:id="@+id/txtNameChange"
+            app:layout_constraintTop_toBottomOf="@+id/txtPushToChangeImageUser"
+            android:hint="@string/name"/>
+    <TextView
+            android:text="@string/textToChangeImage"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPushToChangeImageUser"
+            app:layout_constraintEnd_toStartOf="@id/gVer5"
+            app:layout_constraintStart_toEndOf="@id/gVer1"
+            app:layout_constraintTop_toTopOf="@+id/gHor2" android:textSize="25dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

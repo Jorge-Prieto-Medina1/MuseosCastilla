@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/mobile_navigation"
+            app:startDestination="@+id/MusseumList">
+
+    <fragment
+            android:id="@+id/User"
+            android:name="com.jorgeprieto.ui.User.UserFragment"
+            android:label="@string/menu_user"
+            tools:layout="@layout/fragment_user"/>
+
+    <fragment
+            android:id="@+id/MusseumList"
+            android:name="com.jorgeprieto.ui.MusseumList.MusseumListFragment"
+            android:label="@string/menu_gallery"
+            tools:layout="@layout/fragment_musseum_list"/>
+
+    <fragment
+            android:id="@+id/Map"
+            android:name="com.jorgeprieto.ui.Map.MapFragment"
+            android:label="@string/map"
+            tools:layout="@layout/fragment_map"/>
+
+    <fragment android:id="@+id/checkTickets"
+              android:name="com.jorgeprieto.ui.CheckTickets.CheckTicketsFragment"
+              android:label="@string/check_tickets"
+              tools:layout="@layout/fragment_check_tickets"/>
+</navigation>
