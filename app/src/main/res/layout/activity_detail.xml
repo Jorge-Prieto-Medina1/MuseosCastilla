@@ -6,14 +6,6 @@
         android:layout_height="match_parent" android:id="@+id/rtbRatingBar">
 
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/hor9"
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.35"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gHor1"
             android:orientation="horizontal"
             android:layout_width="0dp"
@@ -27,7 +19,7 @@
             android:orientation="horizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_percent="0.24"
+            app:layout_constraintGuide_percent="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -37,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintGuide_begin="26dp"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintGuide_begin="50dp"/>
 
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gHor4"
@@ -153,21 +145,13 @@
     <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/imgMusseumDetail"
+            android:id="@+id/imgMuseumDetail"
             app:layout_constraintBottom_toTopOf="@id/gHor2"
             app:layout_constraintEnd_toStartOf="@id/gVer4"
             app:layout_constraintStart_toEndOf="@id/gVer2"
             app:layout_constraintTop_toBottomOf="@id/gHor3"
     />
 
-    <ImageSwitcher
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:id="@+id/imgMusseumSwitch"
-            app:layout_constraintBottom_toTopOf="@+id/gHor5"
-            app:layout_constraintEnd_toStartOf="@+id/gVer5"
-            app:layout_constraintTop_toTopOf="@+id/hor9" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintVertical_bias="0.0" app:layout_constraintStart_toStartOf="@+id/gVer1"/>
     <TextView
             android:text=""
             android:textSize="20dp"
@@ -207,7 +191,9 @@
             app:layout_constraintBottom_toTopOf="@+id/gHor6"/>
     <RatingBar
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/ratingBar"
+            android:layout_height="wrap_content"
+            android:rating="0.0"
+            android:id="@+id/ratingBar"
             app:layout_constraintStart_toStartOf="@+id/gVer2" app:layout_constraintEnd_toStartOf="@+id/gVer4"
             app:layout_constraintTop_toTopOf="@+id/gHor7"/>
 

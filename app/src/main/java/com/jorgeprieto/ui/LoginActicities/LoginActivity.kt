@@ -2,10 +2,10 @@ package com.jorgeprieto.ui.LoginActicities
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -17,6 +17,7 @@ import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
+
 
 
 class LoginActivity : AppCompatActivity() {
@@ -91,7 +92,6 @@ class LoginActivity : AppCompatActivity() {
 
             val googleClient = GoogleSignIn.getClient(this, googleConf)
             googleClient.signOut()
-
             startActivityForResult(googleClient.signInIntent, googleSignIn)
         }
     }

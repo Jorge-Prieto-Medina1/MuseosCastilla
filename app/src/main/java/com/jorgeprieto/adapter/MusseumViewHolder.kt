@@ -11,8 +11,6 @@ class MusseumViewHolder (view: View) :RecyclerView.ViewHolder(view){
     fun bind (musseum: Museum){
         var name = musseum.nombre
         var city = musseum.localidad
-        var puntuaction = musseum.puntuacion
-        var votes = musseum.votos
 
         itemView.imgMusseumImage.loadImage(musseum.imagen)
         itemView.txtMusseumName.text = ("$name \n City $city")

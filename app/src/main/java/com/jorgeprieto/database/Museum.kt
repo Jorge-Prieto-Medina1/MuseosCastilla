@@ -9,7 +9,5 @@ data class Museum(
     var localidad: String = "",
     var longitud: Double = 0.0,
     var nombre: String = "",
-    var puntuacion: Double = 0.0,
-    var votos: Long = 0
 ) : Serializable
 

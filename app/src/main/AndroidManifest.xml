@@ -3,21 +3,26 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.jorgeprieto.museosjorgeprieto">
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android"/>
+
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <application
             android:allowBackup="true"
+            android:hardwareAccelerated="true"
             android:icon="@mipmap/imagesmusseumlogo"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/imagesmusseumlogo_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:hardwareAccelerated="true">
+            android:theme="@style/AppTheme">
+        <activity android:name="com.jorgeprieto.ui.MusseumList.QrActivity">
+        </activity>
+
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+                android:name="com.google.android.geo.API_KEY"
+                android:value="@string/google_maps_key"/>
+
         <activity android:name="com.jorgeprieto.ui.MusseumList.MusseumDetail">
         </activity>
         <activity
@@ -45,10 +50,10 @@
                 android:label="RegisterActivity"
                 android:theme="@style/Theme.splash">
         </activity>
-        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
-            android:screenOrientation="portrait"
-            tools:replace="screenOrientation"/>
-
+        <activity
+                android:name="com.journeyapps.barcodescanner.CaptureActivity"
+                android:screenOrientation="portrait"
+                tools:replace="screenOrientation"/>
     </application>
 
 </manifest>

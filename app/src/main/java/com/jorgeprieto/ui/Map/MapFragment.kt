@@ -83,9 +83,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
             val latitud = result.getDouble("latitud")
             val longitud = result.getDouble("longitud")
             val localidad = result.getString("localidad")
-            val puntuacion = result.getDouble("puntuacion")
-            val votos = result.getLong("votos")
-            val museum = Museum(id!!, imagen!!, latitud!!, localidad!!, longitud!!, nombre!!, puntuacion!!, votos!!)
+            val museum = Museum(id!!, imagen!!, latitud!!, localidad!!, longitud!!, nombre!!)
             intent.putExtra("musseum", museum)
             startActivity(intent)
 

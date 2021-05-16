@@ -20,9 +20,7 @@ class Repo {
                 val latitud = document.getDouble("latitud")
                 val longitud = document.getDouble("longitud")
                 val localidad = document.getString("localidad")
-                val puntuacion = document.getDouble("puntuacion")
-                val votos = document.getLong("votos")
-                val museum = Museum(id!!, imagen!!, latitud!!, localidad!!, longitud!!, nombre!!, puntuacion!!, votos!!)
+                val museum = Museum(id!!, imagen!!, latitud!!, localidad!!, longitud!!, nombre!!)
                 listData.add(museum)
             }
             mutableData.value = listData

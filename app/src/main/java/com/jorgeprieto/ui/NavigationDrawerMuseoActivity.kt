@@ -1,6 +1,7 @@
 package com.jorgeprieto
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -14,8 +15,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.zxing.integration.android.IntentIntegrator
 import com.jorgeprieto.museosjorgeprieto.ProviderType
 import com.jorgeprieto.museosjorgeprieto.R
+import kotlinx.android.synthetic.main.fragment_check_tickets.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
@@ -74,6 +77,19 @@ class NavigationDrawerMuseoActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.navigation_drawer_museo, menu)
         return true
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result != null){
+            if (result.contents== null){
+                txtResultQr.text =  "canceled"
+            }else{
+                txtResultQr.text =  "${result.contents}"
+            }
+        }else{
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
