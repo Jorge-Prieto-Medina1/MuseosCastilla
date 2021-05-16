@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class NavigationDrawerMuseoActivity : AppCompatActivity() {
 
+    //clase del navigation drawer
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +80,9 @@ class NavigationDrawerMuseoActivity : AppCompatActivity() {
         return true
     }
 
+    //on activityresult del fragment de leer codigos qr, fue la unica forma que encontre de
+    //llamar a un activity result despues de leer el qr, pues no consegui que funcionase
+    //en el propio fragment
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null){

@@ -50,6 +50,7 @@ class UserFragment : Fragment() {
 
 
 
+    //función para cambiar la foto de usuario
     fun foto(){
 
         btnImageChange.setOnClickListener(){
@@ -70,17 +71,17 @@ class UserFragment : Fragment() {
 
     }
 
+    //on result de cambiar la foto de usuario
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
             photoURIUser = data.toURI()
             imgChange.setImageBitmap(data.extras?.get("data") as Bitmap)
-
         }
         changePhoto()
     }
 
-
+    //función que cierra la sesión actual
     fun closeSesion() {
         btnSignOut.setOnClickListener(){
             val prefs = this.activity!!.getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
@@ -93,7 +94,7 @@ class UserFragment : Fragment() {
             this.activity!!.finish()
         }
     }
-
+    //funcion que guarda la nueva foto en la base de datos
     fun changePhoto(){
         var auth = FirebaseAuth.getInstance()
         auth.currentUser?.let { user ->
@@ -108,7 +109,7 @@ class UserFragment : Fragment() {
         showSucced()
     }
 
-
+    //función para cambiar las credenciales del usuario
     fun changeCredentials(){
         btnChange.setOnClickListener() {
             val prefs = this.activity!!.getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
@@ -137,6 +138,7 @@ class UserFragment : Fragment() {
         }
     }
 
+    //función llamada para cambiar el nombre del usuario
     private fun changeUserName(auth: FirebaseAuth) {
         auth.currentUser?.let { user ->
             val profileUpdates = UserProfileChangeRequest.Builder()
@@ -146,10 +148,13 @@ class UserFragment : Fragment() {
         }
     }
 
+
+    //función llamada para cambiar la contraseña
     private fun changeUserPassword(auth: FirebaseAuth) {
         auth.currentUser.updatePassword(txtPasswordChange.text.toString().trim())
     }
 
+    //alertam mostrada cuando se intenta cambiar los datos con una cuenta de google
     private fun showAlert(){
         val builder = AlertDialog.Builder(this.activity!!)
         builder.setTitle("Error")
@@ -158,6 +163,8 @@ class UserFragment : Fragment() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+    //aviso lanzado cunado los cambios se realizan con exito
     private fun showSucced(){
         val builder = AlertDialog.Builder(this.activity!!)
         builder.setTitle("Succed")

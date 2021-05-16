@@ -8,9 +8,10 @@
         tools:context="com.jorgeprieto.ui.MusseumList.QrActivity">
 
     <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/btnOutQr"
+            android:text="@string/goBack"
+            style="@style/loginScreenButton"
+            android:layout_width="147dp"
+            android:layout_height="65dp" android:id="@+id/btnOutQr"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/imgQrCode"/>
     <ImageView
@@ -20,9 +21,11 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView
-            android:text="TextView"
+            android:text="@string/qrCode"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:id="@+id/txtQr"
             app:layout_constraintBottom_toTopOf="@+id/imgQrCode" app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,12 +15,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.MultiFormatWriter
 import com.jorgeprieto.database.Museum
 import com.jorgeprieto.museosjorgeprieto.R
 import com.jorgeprieto.utils.loadImage
-import com.journeyapps.barcodescanner.BarcodeEncoder
 import kotlinx.android.synthetic.main.activity_detail.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -40,7 +37,7 @@ class MusseumDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         storageReference = FirebaseStorage.getInstance().getReference()
-        retrieveMovie()
+        retrieveMuseo()
         renderUI()
         getStars()
         rating()
@@ -52,14 +49,17 @@ class MusseumDetail : AppCompatActivity() {
 
     }
 
-    private fun retrieveMovie() {
+    //función que obtiene los datos del museo
+    private fun retrieveMuseo() {
         museum = intent.getSerializableExtra("musseum") as Museum?
     }
 
+    //función que carga el nombre del museo
     private fun renderUI() {
         txtNameMusseumDetail.text = museum?.nombre
     }
 
+    //función que carga las estrellas que puso el usuario
     private fun getUserStars() {
         val museumId = (museum!!.id)
         var email = FirebaseAuth.getInstance().currentUser.email
@@ -76,6 +76,7 @@ class MusseumDetail : AppCompatActivity() {
     }
 
 
+    //función que llama a la actividad de generar la entrada del museo
     private fun generateTicket(){
         btnBuyTickets.setOnClickListener {
             val nameMuseum = museum!!.nombre
@@ -89,6 +90,7 @@ class MusseumDetail : AppCompatActivity() {
         }
     }
 
+    //función para cambiar la foto de la lista de fotos
     private fun changePhoto(){
         imgMuseumDetail.setOnClickListener{
             if (dowloadList.size >= 1){
@@ -112,6 +114,7 @@ class MusseumDetail : AppCompatActivity() {
         }
     }
 
+    //función para cargar las fotos en la lista de fotos
     private fun loadPhoto() {
         dowloadList = ArrayList()
         val museumId = (museum!!.id)
@@ -133,6 +136,7 @@ class MusseumDetail : AppCompatActivity() {
         }
     }
 
+    //función para añadir una foto al museo, si se tienen los permisos de camara se llama a la funcion foto
     private fun addPhoto(){
         btnAddPhoto.setOnClickListener{
             if (checkSelfPermission(android.Manifest.permission.CAMERA)  != PackageManager.PERMISSION_GRANTED) {
@@ -147,6 +151,7 @@ class MusseumDetail : AppCompatActivity() {
         }
     }
 
+    //función donde se realiza la propia foto
     fun foto(){
 
         if (checkSelfPermission(android.Manifest.permission.CAMERA)  != PackageManager.PERMISSION_GRANTED) {
@@ -157,6 +162,7 @@ class MusseumDetail : AppCompatActivity() {
         startActivityForResult(cameraIntent, code)
     }
 
+    //activity result de la foto
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == code && data != null){
@@ -166,6 +172,7 @@ class MusseumDetail : AppCompatActivity() {
         }
     }
 
+    //función para guardar la propia foto en la base de datos
     private fun uploadFile(){
         if (imageUri != null){
             val imageRef = storageReference!!.child("imagenes/"+ UUID.randomUUID().toString())
@@ -191,6 +198,7 @@ class MusseumDetail : AppCompatActivity() {
     }
 
 
+    //función para cambiar el ranking
     private fun rating(){
         ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
             val num = rating*2
@@ -199,6 +207,7 @@ class MusseumDetail : AppCompatActivity() {
 
     }
 
+    //función que obtiene la puntuación del museo
     private fun getStars() {
         val museumId = (museum!!.id)
         var puntuacionTotal = 0.0
@@ -220,6 +229,7 @@ class MusseumDetail : AppCompatActivity() {
 
     }
 
+    //función que actualiza las estrellas despues de que el usuario las cambie
     private fun updateStars(num: Double) {
         var email = FirebaseAuth.getInstance().currentUser.email
         val museumId = (museum!!.id)

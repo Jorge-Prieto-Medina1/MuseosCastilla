@@ -2,6 +2,8 @@ package com.jorgeprieto.database
 
 import java.io.Serializable
 
+
+//Objeto serializable para el museo
 data class Museum(
     var id: String = "",
     var imagen: String = "",

@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.itemmuseum.view.*
 
 class MusseumViewHolder (view: View) :RecyclerView.ViewHolder(view){
 
+    //función que carga los datos en cada view holder del recyclerview
     fun bind (musseum: Museum){
         var name = musseum.nombre
         var city = musseum.localidad

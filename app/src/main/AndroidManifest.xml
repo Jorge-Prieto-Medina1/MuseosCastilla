@@ -16,14 +16,12 @@
             android:roundIcon="@mipmap/imagesmusseumlogo_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.jorgeprieto.ui.MusseumList.QrActivity">
-        </activity>
-
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="@string/google_maps_key"/>
 
-        <activity android:name="com.jorgeprieto.ui.MusseumList.MusseumDetail">
+        <activity android:name="com.jorgeprieto.ui.MusseumList.MusseumDetail"
+        android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name="com.jorgeprieto.NavigationDrawerMuseoActivity"
@@ -54,6 +52,8 @@
                 android:name="com.journeyapps.barcodescanner.CaptureActivity"
                 android:screenOrientation="portrait"
                 tools:replace="screenOrientation"/>
+
+        <activity android:name="com.jorgeprieto.ui.MusseumList.QrActivity"/>
     </application>
 
 </manifest>

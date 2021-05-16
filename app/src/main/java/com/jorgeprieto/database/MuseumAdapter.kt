@@ -7,16 +7,12 @@ import com.jorgeprieto.museosjorgeprieto.R
 import com.jorgeprieto.utils.inflate
 
 
+//Clase adaptador del museo la cual se encarga de rellenar el recyclerview de museos
 class MuseumAdapter (private  val listener: (Museum) -> Unit) : RecyclerView.Adapter<MusseumViewHolder> (){
     private var museumList = mutableListOf<Museum>()
 
     fun setListData(data:MutableList<Museum>){
         museumList = data
-    }
-
-    fun refreshList(dataMusuem: MutableList<Museum>){
-        this.museumList.addAll(dataMusuem)
-        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusseumViewHolder {

@@ -2,16 +2,10 @@ package com.jorgeprieto.ui.Map
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.bumptech.glide.load.model.Model
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -24,7 +18,6 @@ import com.jorgeprieto.database.Museum
 import com.jorgeprieto.database.data.Repo
 import com.jorgeprieto.museosjorgeprieto.R
 import com.jorgeprieto.ui.MusseumList.MusseumDetail
-import kotlinx.android.synthetic.main.fragment_map.*
 
 class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
@@ -51,7 +44,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
         return rootView
     }
 
-
+    //función que carga el mapa
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
 
@@ -73,7 +66,8 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
 
     }
 
-
+    //el id del museo se guarda en cada marcador, despues de pulsarlo se vuelve a llamar a la vase de datos
+    //para obtener el museo y se inicia su actividad
     override fun onMarkerClick(marker: Marker): Boolean {
         val intent = Intent(this.activity!!, MusseumDetail::class.java)
         db.collection("museos").document(marker.tag.toString()).get().addOnSuccessListener { result ->

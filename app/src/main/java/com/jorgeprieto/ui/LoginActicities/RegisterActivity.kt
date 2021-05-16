@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
 
+    // boolean que recoge si se ha realizado la foto, codigo, uri de la foto e instancia de la base de datos
     var fotoBol: Boolean = false
     val REQUEST_CODE = 200
     var photoURIUser:String = ""
@@ -34,12 +35,13 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
         register()
         back()
         capturePhoto()
     }
 
+    //función que comprueba los permisos para sacar fotos, si se tienen te manda a hacer la foto, si no te pide
+    //los permisos
     fun capturePhoto() {
         btnImage.setOnClickListener {
 
@@ -57,6 +59,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
+    //función para realizar la foto
     fun foto(){
 
         if (checkSelfPermission(android.Manifest.permission.CAMERA)  != PackageManager.PERMISSION_GRANTED) {
@@ -67,6 +70,8 @@ class RegisterActivity : AppCompatActivity() {
         startActivityForResult(cameraIntent, REQUEST_CODE)
     }
 
+    //el codigo que se ejecuta despues de realizar la foto, guarda la uri de la imagen,
+    //pone la imagen en el image view y vuelve verdadero el booleano de la foto
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
@@ -77,6 +82,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
+    //funcion que cierra la pantalla de registro y vueleve a abrir la de login
     private fun back (){
 
         btnBackRg.setOnClickListener{
@@ -86,9 +92,8 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-
+    //función que comprueba si los campos están completos y registra al usuario
     private fun register (){
-
         btnRegisterRg.setOnClickListener{
             if (txtEmailRg.text.isNotEmpty() && txtPasswordRg.text.isNotEmpty() && txtName.text.isNotEmpty() && fotoBol){
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(txtEmailRg.text.toString(), txtPasswordRg.text.toString()).addOnCompleteListener(){
@@ -104,6 +109,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    //función que realiza el login despues de registrarte
     private fun login(){
         FirebaseAuth.getInstance().signInWithEmailAndPassword(txtEmailRg.text.toString(),txtPasswordRg.text.toString()).addOnCompleteListener {
             if (it.isSuccessful) {
@@ -115,6 +121,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    //función que añade la foto y el nombre de usuario al usuario recién registrado
     private fun addRestOfData(){
         var auth = FirebaseAuth.getInstance()
         auth.currentUser?.let { user ->
@@ -140,7 +147,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
 
-
+    //alerta si falla el registro
     private fun showAlert(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
@@ -150,6 +157,7 @@ class RegisterActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    //función que manda al usuario a la main activity junto con el email y el provider
     private fun goMain(email: String, provider: ProviderType){
         val main = Intent (this@RegisterActivity, NavigationDrawerMuseoActivity::class.java).apply {
             putExtra("email", email)

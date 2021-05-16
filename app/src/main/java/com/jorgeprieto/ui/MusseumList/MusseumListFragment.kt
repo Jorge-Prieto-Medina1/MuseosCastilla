@@ -2,14 +2,11 @@ package com.jorgeprieto.ui.MusseumList
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.google.firebase.firestore.FirebaseFirestore
 import com.jorgeprieto.database.Museum
 import com.jorgeprieto.database.MuseumAdapter
 import com.jorgeprieto.database.MuseumViewModel
@@ -17,8 +14,9 @@ import com.jorgeprieto.museosjorgeprieto.R.*
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_musseum_list.*
 
-
+//fragmento del recycler de museos
 class MusseumListFragment : Fragment() {
+
 
 
     private lateinit var adapter: MuseumAdapter
@@ -41,6 +39,7 @@ class MusseumListFragment : Fragment() {
 
     }
 
+
     fun observeData(){
         viewModel.getMuseumData().observe(this.activity!!, Observer {
             adapter.setListData(it)
@@ -48,7 +47,7 @@ class MusseumListFragment : Fragment() {
         })
     }
 
-
+    //funcion para abrir cada uno de los museos al pulsarlos
     private fun onMuseumClicked(museum: Museum) {
         val intent = Intent(this.activity!!, MusseumDetail::class.java)
         intent.putExtra("musseum", museum)

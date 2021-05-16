@@ -1,14 +1,11 @@
 package com.jorgeprieto.ui.CheckTickets
 
-import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.zxing.integration.android.IntentIntegrator
-import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 import com.jorgeprieto.museosjorgeprieto.R
 import kotlinx.android.synthetic.main.fragment_check_tickets.*
 
@@ -16,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_check_tickets.*
 class CheckTicketsFragment : Fragment() {
 
 
-
+    //fragmento con el lector de qr para comprobar los tickets
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,24 +27,12 @@ class CheckTicketsFragment : Fragment() {
 
 
 
-     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
-            if (result != null){
-                if (result.contents== null){
-                    txtResultQr.text =  "canceled"
-                }else{
-                    txtResultQr.text =  "${result.contents}"
-                }
-            }else{
-                super.onActivityResult(requestCode, resultCode, data)
-            }
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initScanner()
     }
 
+    //funcion del escaner
     private fun initScanner(){
         btnScanner.setOnClickListener(){
             val inter = IntentIntegrator(this.activity!!)
@@ -55,7 +40,8 @@ class CheckTicketsFragment : Fragment() {
             inter.setPrompt("Scan the ticket")
             inter.setBeepEnabled(true)
             inter.initiateScan()
-
+            //debido a que esto es un fragment el on activity result esta en la clase navigationDrawer pues no encontre
+            //forma de sobrescribirlo aqui
         }
 
     }

@@ -49,6 +49,7 @@ class PantallaSplash : AppCompatActivity() {
         }, splashScrenTime.toLong())
     }
 
+    //función que pide los permisos para leer datos externos
     fun getPerm() {
 
         if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)  != PackageManager.PERMISSION_GRANTED) {

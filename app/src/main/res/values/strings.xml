@@ -34,4 +34,7 @@
     <string name="tickets">Buy tickets</string>
     <string name="add_photo">Add photo</string>
     <string name="scanner">Scan The Ticket</string>
+    <string name="qrCode">This is your QR Code</string>
+    <string name="scanCode">Press to scan the code</string>
+    <string name="goBack">Back</string>
 </resources>

@@ -16,8 +16,17 @@ class QrActivity : AppCompatActivity() {
         setContentView(R.layout.activity_qr)
 
         showImage()
+        back()
+    }
+    //boton para volver al museo
+    private fun back(){
+        btnOutQr.setOnClickListener(){
+            finish()
+        }
+
     }
 
+    //funcion que genera el qr
     private fun showImage(){
         val bundle = intent.extras
         var nameUser = bundle!!.getString("nameUser")

@@ -19,9 +19,10 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 
+//actividad del login
 
 class LoginActivity : AppCompatActivity() {
-
+    //codigo de google e instancia de la base de datos
     private  val googleSignIn = 300
     private val db = FirebaseFirestore.getInstance()
 
@@ -34,11 +35,13 @@ class LoginActivity : AppCompatActivity() {
         loginGoogle()
     }
 
+    //función que hace al layout visible
     override fun onStart() {
         super.onStart()
         layoutLg.visibility = View.VISIBLE
     }
 
+    //activity result del sign in de google
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == googleSignIn){
@@ -83,6 +86,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+    //función que hace el login con google
     private fun loginGoogle(){
         btnGoogleLg.setOnClickListener{
             val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -96,6 +100,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    //esta función vuelve el layout invisible si el usuario ya tiene le login hecho
+    // la idea es que al tener guardado el login anterior
+    //el usuario no tenga que ver el login al volver a entrar
     private fun session(){
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
         val email = prefs.getString("email", null)
@@ -108,7 +115,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
+    //esta función simplemente abre la actividad de registarte
     private fun register (){
 
         btnRegisterLg.setOnClickListener{
@@ -118,8 +125,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    //función que comprueba que los datos estén en la base de datos para realizar el login
     private fun login (){
-
         btnLogin.setOnClickListener{
             if (txtEmail.text.isNotEmpty() && txtPassword.text.isNotEmpty()){
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(txtEmail.text.toString(),txtPassword.text.toString()).addOnCompleteListener {
@@ -134,6 +141,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+    //alerta para cuando el email o la contraseña son incorrectos
     private fun showAlert(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
@@ -143,6 +151,7 @@ class LoginActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    //función que manda al usuario a la main activity junto con el email y el provider
     private fun goToMain(email: String, provider: ProviderType){
         val main = Intent (this@LoginActivity, NavigationDrawerMuseoActivity::class.java).apply {
             putExtra("email", email)

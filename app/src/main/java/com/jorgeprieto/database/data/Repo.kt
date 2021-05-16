@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.jorgeprieto.database.Museum
 
 class Repo {
-
+    //clase que se encarga de sacar los datos de cada museo de la base de datos
     fun getMuseumData(): LiveData<MutableList<Museum>> {
         val mutableData = MutableLiveData<MutableList<Museum>>()
         val db = FirebaseFirestore.getInstance()
