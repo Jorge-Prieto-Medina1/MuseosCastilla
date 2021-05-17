@@ -117,7 +117,6 @@ class LoginActivity : AppCompatActivity() {
 
     //esta función simplemente abre la actividad de registarte
     private fun register (){
-
         btnRegisterLg.setOnClickListener{
             val register = Intent (this@LoginActivity, RegisterActivity::class.java)
                 startActivity(register)
