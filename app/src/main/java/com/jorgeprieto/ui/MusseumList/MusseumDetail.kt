@@ -33,6 +33,7 @@ class MusseumDetail : AppCompatActivity() {
     private var imageUri:Uri? = null
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -46,8 +47,38 @@ class MusseumDetail : AppCompatActivity() {
         changePhoto()
         generateTicket()
         getUserStars()
+        onSnapshotPhoto()
+        onSnapshotRate()
 
     }
+
+    private fun onSnapshotRate() {
+
+        db.collection("puntuacion")
+            .whereEqualTo("idMuseo", museum!!.id)
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+
+                    return@addSnapshotListener
+                }
+                getStars()
+            }
+
+    }
+
+    private fun onSnapshotPhoto(){
+        db.collection("imagenes")
+            .whereEqualTo("idMuseo", museum!!.id)
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+
+                    return@addSnapshotListener
+                }
+                loadPhoto()
+            }
+
+    }
+
 
     //función que obtiene los datos del museo
     private fun retrieveMuseo() {
